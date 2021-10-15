@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar pb;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    FirebaseAuth fAuth;//fAuth
-
-
+    FirebaseAuth fAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(MainActivity.this,"Login Sucessfull",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),MainMenu.class));
                         }
                         else{
                             Toast.makeText(MainActivity.this,"Error "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
