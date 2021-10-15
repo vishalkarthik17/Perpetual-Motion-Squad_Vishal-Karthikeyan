@@ -68,6 +68,7 @@ public class Registration extends AppCompatActivity {
                         if(task.isSuccessful()){
                             reff.child("Users").child(fAuth.getUid()).child("Name").setValue(namee);
                             reff.child("Users").child(fAuth.getUid()).child("Email").setValue(em);
+                            reff.child("Users").child(fAuth.getUid()).child("Trigger").setValue("Leave Me Alone");
                             Toast.makeText(Registration.this,"Registered",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }

@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_add_emergency_contact.xml" value="0.2109375" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_main.xml" value="0.19927536231884058" />
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_main_menu.xml" value="0.4" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_registration.xml" value="0.1" />
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_set_voice_trigger.xml" value="0.4" />
       </map>
     </option>
   </component>
