@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity {
 
-    EditText fname,Remail,Rpw;
+    EditText fname,Remail,Rpw,phno;
     Button regBtn;
     ProgressBar Rpb;
     FirebaseAuth fAuth;
@@ -37,6 +37,7 @@ public class Registration extends AppCompatActivity {
         Rpw=findViewById(R.id.RegisterPassword);
         regBtn=findViewById(R.id.LoginBtn);
         Rpb=findViewById(R.id.progressBarReg);
+        phno=findViewById(R.id.PhoneText);
 
         fAuth=FirebaseAuth.getInstance();
         reff= FirebaseDatabase.getInstance().getReference();
@@ -48,6 +49,7 @@ public class Registration extends AppCompatActivity {
                 String em=Remail.getText().toString().trim();
                 String pass=Rpw.getText().toString().trim();
                 String namee=fname.getText().toString().trim();
+                String phNum=phno.getText().toString().trim();
                 if(TextUtils.isEmpty(em)){
                     Remail.setError("Email is Required");
                     return;
@@ -60,6 +62,10 @@ public class Registration extends AppCompatActivity {
                     Rpw.setError("Password Must be >= 6 Characters");
                     return;
                 }
+                if(phNum.length()<10){
+                    phno.setError("Invalid Phone Number");
+                    return;
+                }
                 Rpb.setVisibility(View.VISIBLE);
 
                 fAuth.createUserWithEmailAndPassword(em,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -69,6 +75,8 @@ public class Registration extends AppCompatActivity {
                             reff.child("Users").child(fAuth.getUid()).child("Name").setValue(namee);
                             reff.child("Users").child(fAuth.getUid()).child("Email").setValue(em);
                             reff.child("Users").child(fAuth.getUid()).child("Trigger").setValue("Leave Me Alone");
+                            reff.child("Users").child(fAuth.getUid()).child("Phone_Number").setValue(phNum);
+                            reff.child("Phone_UID").child(phNum).setValue(fAuth.getUid());
                             Toast.makeText(Registration.this,"Registered",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }
