@@ -77,6 +77,7 @@ public class Registration extends AppCompatActivity {
                             reff.child("Users").child(fAuth.getUid()).child("Trigger").setValue("Leave Me Alone");
                             reff.child("Users").child(fAuth.getUid()).child("Phone_Number").setValue(phNum);
                             reff.child("Phone_UID").child(phNum).setValue(fAuth.getUid());
+                            reff.child("Users").child(fAuth.getUid()).child("CanTrackMe").setValue("false");
                             Toast.makeText(Registration.this,"Registered",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }
