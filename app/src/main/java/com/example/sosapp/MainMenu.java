@@ -2,7 +2,11 @@ package com.example.sosapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,12 +28,14 @@ public class MainMenu extends AppCompatActivity {
     Button trackon,trackoff;
     DatabaseReference reff;
     FirebaseAuth fAuth;
+    private TrackingService ser;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},101);
 
         setVoiceTriggerBtn=findViewById(R.id.VoiceTriggerBtn);
         AddEmergencyContactBtn=findViewById(R.id.AddECBtn);
@@ -39,7 +45,7 @@ public class MainMenu extends AppCompatActivity {
         trackoff=findViewById(R.id.trackOFF);
         reff= FirebaseDatabase.getInstance().getReference();
         fAuth=FirebaseAuth.getInstance();
-
+        ser=new TrackingService();
 
         setVoiceTriggerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +97,6 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
-
         trackon.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -111,10 +116,9 @@ public class MainMenu extends AppCompatActivity {
 
                     }
                 });
-                startService(new Intent(MainMenu.this,TrackingService.class));
+                startService(v);
             }
         });
-
         trackoff.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -135,9 +139,38 @@ public class MainMenu extends AppCompatActivity {
                     }
                 });
 
-                stopService(new Intent(MainMenu.this,TrackingService.class));
+                stopService(v);
             }
         });
 
+    }
+
+    public void startService(View v) {
+
+        Intent serviceIntent = new Intent(this, TrackingService.class);
+        serviceIntent.setAction("STARTSERVICE");
+        if(!isMyServiceRunning(ser.getClass())){
+            startService(serviceIntent);
+        }
+
+        else
+            Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
+    }
+    public void stopService(View v) {
+        if(isMyServiceRunning(ser.getClass())){
+            Intent serviceIntent = new Intent(this, TrackingService.class);
+            serviceIntent.setAction("STOPSERVICE");
+            startService(serviceIntent);
+        }
+
+    }
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

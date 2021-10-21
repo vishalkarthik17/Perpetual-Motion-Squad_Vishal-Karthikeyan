@@ -1,6 +1,7 @@
 package com.example.sosapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.sosapp.databinding.ActivityMapsBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +42,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private DatabaseReference reff;
@@ -54,30 +56,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private final int MIN_TIME = 1000;
     private final int MIN_DIST = 1;
     int canTrack=0;
+    String who;
     // private ActivityMapsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        //binding = ActivityMapsBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
+
+        who="";
+        Intent fromMain=getIntent();
+        Bundle b=fromMain.getExtras();
+        if(b!=null){
+            who=b.get("uid").toString();
+        }
+
         pbMap=findViewById(R.id.progressBarMap);
         LocText=findViewById(R.id.LocationText);
         fAuth=FirebaseAuth.getInstance();
-        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         backBtn=findViewById(R.id.BackBtnMap);
         titleText=findViewById(R.id.MapTitleText);
-        if(!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)== PackageManager.PERMISSION_GRANTED))
-        {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},101);
-        }
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Location Permission Needed", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_TIME,1,this);
 
         reff = FirebaseDatabase.getInstance().getReference();
 
@@ -93,7 +91,73 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        reff.child("Users").child(who).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                double lat=Double.parseDouble(snapshot.child("location").child("latitude").getValue().toString());
+                double longi=Double.parseDouble(snapshot.child("location").child("longitude").getValue().toString());
+                String str= String.valueOf(lat)+" / "+String.valueOf(longi)+" ";
+                Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
+                LatLng curpos=new LatLng(lat,longi);
+                if(lat!=0 && longi!=0){
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                    Date date = new Date();
+                    String abc=(formatter.format(date))+" ";
+                    Geocoder geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(lat, longi, 1);
+                        abc=abc+addresses.get(0).getSubLocality()+", "+addresses.get(0).getLocality();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    mMap.addMarker(new MarkerOptions().position(curpos).title(abc));
+                    LocText.setText("Location :"+abc.substring(19, abc.length()));
+                    if(first==true){
+                        pbMap.setVisibility(View.INVISIBLE);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curpos, 15));
+                        first=false;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        /*
+        reff.child("Users").child(who).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+
+
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
     }
+
 
     /**
      * Manipulates the map once available.
@@ -113,7 +177,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                titleText.setText(snapshot.child("Users").child(fAuth.getUid()).child("Name").getValue().toString()+" is in Trouble!");
+                titleText.setText(snapshot.child("Users").child(who).child("Name").getValue().toString()+" is in Trouble!");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        reff.child("Users").child(who).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child("CanTrackMe").getValue().toString().equals("true")){
+                    double lat=Double.parseDouble(snapshot.child("location").child("latitude").getValue().toString());
+                    double longi=Double.parseDouble(snapshot.child("location").child("longitude").getValue().toString());
+                    String str= String.valueOf(lat)+" / "+String.valueOf(longi)+" ";
+                    Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
+                    LatLng curpos=new LatLng(lat,longi);
+                    if(lat!=0 && longi!=0){
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        Date date = new Date();
+                        String abc=(formatter.format(date))+" ";
+                        Geocoder geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
+                        try {
+                            List<Address> addresses = geocoder.getFromLocation(lat, longi, 1);
+                            abc=abc+addresses.get(0).getSubLocality()+", "+addresses.get(0).getLocality();
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        mMap.addMarker(new MarkerOptions().position(curpos).title(abc));
+                        LocText.setText("Location :"+abc.substring(19, abc.length()));
+                        if(first==true){
+                            pbMap.setVisibility(View.INVISIBLE);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curpos, 15));
+                            first=false;
+                        }
+                    }
+
+                }
             }
 
             @Override
@@ -123,24 +225,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
     }
-
+/*
     @Override
     public void onLocationChanged(@NonNull Location location) {
 
-        /*reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("Users").child(fAuth.getUid()).child("CanTrackMe").getValue()=="true")
-                    canTrack=0;
-                else
-                    canTrack=1;
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
         if(location!=null  ){
             String str="Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude();
             Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
@@ -178,6 +267,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
+*/
 
 }
