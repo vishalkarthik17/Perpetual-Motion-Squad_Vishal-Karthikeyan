@@ -71,6 +71,29 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CurrentTriggerTextView"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.151" />
+
+    <Button
+        android:id="@+id/DisableV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disable Voice Trigger"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ChangeTriggerBtn"
+        app:layout_constraintVertical_bias="0.368" />
+
+    <Button
+        android:id="@+id/EnableV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable Voice Trigger"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DisableV"
+        app:layout_constraintVertical_bias="0.263" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

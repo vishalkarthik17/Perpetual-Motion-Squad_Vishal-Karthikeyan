@@ -103,7 +103,10 @@ public class TrackingService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        Toast.makeText(TrackingService.this, "Loc", Toast.LENGTH_SHORT).show();
-        reff.child("location").setValue(location);
+        if(!close){
+            Toast.makeText(TrackingService.this, "Loc", Toast.LENGTH_SHORT).show();
+            reff.child("location").setValue(location);
+        }
+
     }
 }
