@@ -77,7 +77,7 @@ public class MainMenu extends AppCompatActivity {
         AddEmergencyContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),AddEmergencyContact.class));
+                startActivity(new Intent(getApplicationContext(),EmergencyContactView.class));
             }
         });
         yourRespBtn.setOnClickListener(new View.OnClickListener() {
