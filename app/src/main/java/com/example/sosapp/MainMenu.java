@@ -83,7 +83,7 @@ public class MainMenu extends AppCompatActivity {
         yourRespBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(getApplicationContext(),MainMenu.class));
+                startActivity(new Intent(getApplicationContext(),YourRespView.class));
             }
         });
         LiveTracingBtn.setOnClickListener(new View.OnClickListener() {
@@ -169,6 +169,7 @@ public class MainMenu extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot i : snapshot.child("Users").child(fAuth.getUid()).child("EmergencyContacts").getChildren()){
                     String ec=i.getKey();
+                    if(!ec.equals("AAA"))
                     reff.child("Users").child(ec).child("YourResp").child(fAuth.getUid()).setValue("true");
                 }
             }
@@ -187,6 +188,7 @@ public class MainMenu extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot i : snapshot.child("Users").child(fAuth.getUid()).child("EmergencyContacts").getChildren()){
                     String ec=i.getKey();
+                    if(!ec.equals("AAA"))
                     reff.child("Users").child(ec).child("YourResp").child(fAuth.getUid()).setValue("false");
                 }
             }

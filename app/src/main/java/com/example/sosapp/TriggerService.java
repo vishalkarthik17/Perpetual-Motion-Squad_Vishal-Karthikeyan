@@ -245,6 +245,7 @@ public class TriggerService extends Service implements SensorEventListener {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot i : snapshot.child("Users").child(fAuth.getUid()).child("EmergencyContacts").getChildren()){
                     String ec=i.getKey();
+                    if(!ec.equals("AAA"))
                     reff.child("Users").child(ec).child("YourResp").child(fAuth.getUid()).setValue("true");
                 }
             }
@@ -263,6 +264,7 @@ public class TriggerService extends Service implements SensorEventListener {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot i : snapshot.child("Users").child(fAuth.getUid()).child("EmergencyContacts").getChildren()){
                     String ec=i.getKey();
+                    if(!ec.equals("AAA"))
                     reff.child("Users").child(ec).child("YourResp").child(fAuth.getUid()).setValue("false");
                 }
             }

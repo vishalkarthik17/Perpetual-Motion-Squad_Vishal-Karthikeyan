@@ -74,10 +74,14 @@ public class Registration extends AppCompatActivity {
                         if(task.isSuccessful()){
                             reff.child("Users").child(fAuth.getUid()).child("Name").setValue(namee);
                             reff.child("Users").child(fAuth.getUid()).child("Email").setValue(em);
-                            reff.child("Users").child(fAuth.getUid()).child("Trigger").setValue("Leave Me Alone");
+                            reff.child("Users").child(fAuth.getUid()).child("Trigger").setValue("help me");
                             reff.child("Users").child(fAuth.getUid()).child("Phone_Number").setValue(phNum);
                             reff.child("Phone_UID").child(phNum).setValue(fAuth.getUid());
+                            reff.child("Name_UID").child(namee).setValue(fAuth.getUid());
                             reff.child("Users").child(fAuth.getUid()).child("CanTrackMe").setValue("false");
+                            reff.child("Users").child(fAuth.getUid()).child("EmergencyContacts").child("AAA").setValue("AAA");
+                            reff.child("Users").child(fAuth.getUid()).child("YourResp").child("AAA").setValue("AAA");
+                            reff.child("Users").child(fAuth.getUid()).child("location").child("AAA").setValue("AAA");
                             Toast.makeText(Registration.this,"Registered",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }
