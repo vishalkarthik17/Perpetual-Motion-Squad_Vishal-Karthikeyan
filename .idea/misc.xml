@@ -12,10 +12,13 @@
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_your_resp_edit.xml" value="0.264" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_your_resp_view.xml" value="0.264" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/menu/checkbox.xml" value="0.209375" />
+        <entry key="..\:/Sudarshan/SCH-SOS/SOSApp/app/src/main/res/layout/activity_emergency_contact_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Sudarshan/SCH-SOS/SOSApp/app/src/main/res/layout/activity_emergency_contact_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Sudarshan/SCH-SOS/SOSApp/app/src/main/res/layout/contact_info.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
