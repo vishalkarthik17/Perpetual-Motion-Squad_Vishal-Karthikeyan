@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class YourRespEdit extends AppCompatActivity {
     DatabaseReference reff;
@@ -29,6 +30,9 @@ public class YourRespEdit extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     ArrayList<String> listName=new ArrayList<String>();
     Button back;
+    ArrayList<String> names=new ArrayList<>();
+    ArrayList<String> uids=new ArrayList<>();
+    HashMap<String,String> name_uid=new HashMap<String,String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +52,12 @@ public class YourRespEdit extends AppCompatActivity {
                         String toDisp=snapshot.child("Users").child(uid).child("Name").getValue().toString();
                         listName.add(toDisp);
                         adapter.notifyDataSetChanged();
-                        Toast.makeText(YourRespEdit.this,toDisp , Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(YourRespEdit.this,toDisp , Toast.LENGTH_SHORT).show();
                     }
+                }
+                for (DataSnapshot i : snapshot.child("Name_UID").getChildren()){
+                    name_uid.put(i.getKey(),i.getValue().toString());
+                    Toast.makeText(YourRespEdit.this, String.valueOf(name_uid.size()), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -77,15 +85,25 @@ public class YourRespEdit extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+
         int id=item.getItemId();
         if(id==R.id.item_done){
             String itemSelected="Selected : ";
             for(int i=0;i<respList.getCount();i++){
                 if(respList.isItemChecked(i)){
+                    names.add(respList.getItemAtPosition(i).toString());
                     itemSelected+=respList.getItemAtPosition(i)+" \n ";
                 }
             }
-            Toast.makeText(this, itemSelected, Toast.LENGTH_SHORT).show();
+
+            for(int i=0;i<names.size();i++)
+            uids.add(name_uid.get(names.get(i)));
+            int count=0;
+            for(int i=0;i<uids.size();i++){
+                reff.child("Users").child(fAuth.getUid()).child("YourResp").child(uids.get(i)).removeValue();
+                count++;
+            }
+          Toast.makeText(this, String.valueOf(uids.size()), Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
 

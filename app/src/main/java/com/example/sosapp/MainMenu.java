@@ -96,7 +96,7 @@ public class MainMenu extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot i : snapshot.child("Users").child(fAuth.getUid()).child("YourResp").getChildren()){
-                            String val= (String) i.getValue();
+                            String val= String.valueOf(i.getValue());
                             if(val.equals("true")){
                                 boolean trouble=true;
                                 Intent liveScreen=new Intent(getApplicationContext(),MapsActivity.class);
