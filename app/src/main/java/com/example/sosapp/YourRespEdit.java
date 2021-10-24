@@ -42,7 +42,7 @@ public class YourRespEdit extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,listName);
         respList.setAdapter(adapter);
-        back=findViewById(R.id.backToYourResp);
+        back=findViewById(R.id.ViewECtoMainMenu);
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

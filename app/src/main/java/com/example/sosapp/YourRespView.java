@@ -31,13 +31,13 @@ public class YourRespView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_resp_view);
-        respList=findViewById(R.id.RespList);
+        respList=findViewById(R.id.EmergencyContactViewList);
         reff= FirebaseDatabase.getInstance().getReference();
         fAuth=FirebaseAuth.getInstance();
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,listName);
         respList.setAdapter(adapter);
-        bck=findViewById(R.id.backToYourResp);
-        edit=findViewById(R.id.EditRespBtn);
+        bck=findViewById(R.id.ViewECtoMainMenu);
+        edit=findViewById(R.id.AddECButton);
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

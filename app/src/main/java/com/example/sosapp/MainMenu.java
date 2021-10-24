@@ -49,6 +49,8 @@ public class MainMenu extends AppCompatActivity {
         reff= FirebaseDatabase.getInstance().getReference();
         fAuth=FirebaseAuth.getInstance();
 
+        MySingletonClass.getInstance().setValuePhoneUIDHashMap();
+
 
         //Track Text visibility condition.
         reff.addValueEventListener(new ValueEventListener() {

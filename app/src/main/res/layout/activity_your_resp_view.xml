@@ -7,7 +7,7 @@
     tools:context=".YourRespView">
 
     <Button
-        android:id="@+id/EditRespBtn"
+        android:id="@+id/AddECButton"
         android:layout_width="119dp"
         android:layout_height="51dp"
         android:layout_marginEnd="16dp"
@@ -15,8 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toEndOf="@+id/backToYourResp"
-        app:layout_constraintTop_toBottomOf="@+id/RespList"
+        app:layout_constraintStart_toEndOf="@+id/ViewECtoMainMenu"
+        app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList"
         app:layout_constraintVertical_bias="0.523" />
 
     <TextView
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/RespList"
+        android:id="@+id/EmergencyContactViewList"
         android:layout_width="385dp"
         android:layout_height="539dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,12 +45,12 @@
         app:layout_constraintVertical_bias="0.112" />
 
     <Button
-        android:id="@+id/backToYourResp"
+        android:id="@+id/ViewECtoMainMenu"
         android:layout_width="108dp"
         android:layout_height="52dp"
         android:layout_marginStart="68dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RespList" />
+        app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList" />
 </androidx.constraintlayout.widget.ConstraintLayout>
