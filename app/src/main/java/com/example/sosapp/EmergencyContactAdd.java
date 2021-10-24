@@ -106,7 +106,7 @@ public class EmergencyContactAdd extends AppCompatActivity {
                     phoneCursor.close();
 
                     //contactsInfoList.add(toDisp);
-                    if(DatabasePN.contains(phoneNumber)){
+                    if(DatabasePN.contains(phoneNumber) && !MySingletonClass.getInstance().currentEmergencyContacts.contains(phoneNumber)){
                         Names.add(displayName);
                         Name_PhoneNum.put(displayName,phoneNumber);
                         dataAdapter.notifyDataSetChanged();
