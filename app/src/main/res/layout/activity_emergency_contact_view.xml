@@ -8,21 +8,20 @@
 
     <Button
         android:id="@+id/AddECButton"
-        android:layout_width="119dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
         android:text="ADD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toEndOf="@+id/ViewECtoMainMenu"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.531" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="278dp"
-        android:layout_height="70dp"
+        android:id="@+id/ECEditTitle"
+        android:layout_width="290dp"
+        android:layout_height="42dp"
         android:layout_marginTop="28dp"
         android:text="Your Emergency Contacts"
         android:textAlignment="center"
@@ -35,22 +34,66 @@
 
     <ListView
         android:id="@+id/EmergencyContactViewList"
-        android:layout_width="385dp"
-        android:layout_height="539dp"
+        android:layout_width="384dp"
+        android:layout_height="505dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintVertical_bias="0.135" />
 
     <Button
-        android:id="@+id/ViewECtoMainMenu"
-        android:layout_width="108dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="68dp"
+        android:id="@+id/BackToViewEC"
+        android:layout_width="102dp"
+        android:layout_height="51dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <Button
+        android:id="@+id/RemoveEC"
+        android:layout_width="126dp"
+        android:layout_height="55dp"
+        android:text="Remove"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AddECButton"
+        app:layout_constraintStart_toEndOf="@+id/BackToViewEC"
         app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="78dp"
+        android:layout_height="48dp"
+        android:showText="false"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:textSize="10sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/EmergencyContactViewList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/ECEditTitle"
+        app:layout_constraintVertical_bias="1.0"
+        tools:checked="false" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Police Alert : "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ECEditTitle"
+        app:layout_constraintVertical_bias="0.025" />
 </androidx.constraintlayout.widget.ConstraintLayout>

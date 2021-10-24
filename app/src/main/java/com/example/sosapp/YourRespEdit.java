@@ -42,7 +42,7 @@ public class YourRespEdit extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,listName);
         respList.setAdapter(adapter);
-        back=findViewById(R.id.ViewECtoMainMenu);
+        back=findViewById(R.id.BackToViewEC);
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -57,7 +57,7 @@ public class YourRespEdit extends AppCompatActivity {
                 }
                 for (DataSnapshot i : snapshot.child("Name_UID").getChildren()){
                     name_uid.put(i.getKey(),i.getValue().toString());
-                    Toast.makeText(YourRespEdit.this, String.valueOf(name_uid.size()), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(YourRespEdit.this, String.valueOf(name_uid.size()), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -101,10 +101,12 @@ public class YourRespEdit extends AppCompatActivity {
             int count=0;
             for(int i=0;i<uids.size();i++){
                 reff.child("Users").child(fAuth.getUid()).child("YourResp").child(uids.get(i)).removeValue();
+                reff.child("Users").child(uids.get(i)).child("EmergencyContacts").child(fAuth.getUid()).removeValue();
                 count++;
             }
-          Toast.makeText(this, String.valueOf(uids.size()), Toast.LENGTH_SHORT).show();
+          //Toast.makeText(this, String.valueOf(uids.size()), Toast.LENGTH_SHORT).show();
         }
+        startActivity(new Intent(this,YourRespView.class));
         return super.onOptionsItemSelected(item);
 
     }

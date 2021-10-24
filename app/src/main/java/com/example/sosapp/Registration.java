@@ -82,6 +82,7 @@ public class Registration extends AppCompatActivity {
                             reff.child("Users").child(fAuth.getUid()).child("EmergencyContacts").child("AAA").setValue("AAA");
                             reff.child("Users").child(fAuth.getUid()).child("YourResp").child("AAA").setValue("AAA");
                             reff.child("Users").child(fAuth.getUid()).child("location").child("AAA").setValue("AAA");
+                            reff.child("Users").child(fAuth.getUid()).child("police_alert").setValue("false");
                             Toast.makeText(Registration.this,"Registered",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }

@@ -36,6 +36,7 @@ public class MySingletonClass extends AppCompatActivity {
 
     public HashMap<String,String>PhonexUID_DB=new HashMap<>();
     //PhoneNumber Registered --> Uid Mapping
+    public HashMap<String,String>NamexUID_DB=new HashMap<>();
 
     public ArrayList<String> currentEmergencyContacts;
 
@@ -59,6 +60,25 @@ public class MySingletonClass extends AppCompatActivity {
                     String sss=i.getValue().toString();
                     if(ss!=null && sss!=null && !ss.equals("AAA"))
                     PhonexUID_DB.put(ss,sss);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void setValuesNameUIDHashMap(){
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot i : snapshot.child("Name_UID").getChildren()){
+                    String ss=i.getKey().toString();
+                    String sss=i.getValue().toString();
+                    if(ss!=null && sss!=null && !ss.equals("AAA"))
+                        NamexUID_DB.put(ss,sss);
                 }
 
             }

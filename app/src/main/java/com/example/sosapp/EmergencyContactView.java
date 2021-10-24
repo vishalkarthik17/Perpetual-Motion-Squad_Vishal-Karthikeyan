@@ -2,25 +2,15 @@ package com.example.sosapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.Switch;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,15 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import static com.example.sosapp.EmergencyContactAdd.PERMISSIONS_REQUEST_READ_CONTACTS;
-
 public class EmergencyContactView extends AppCompatActivity {
     DatabaseReference reff;
     FirebaseAuth fAuth;
     ListView EClist;
     ArrayAdapter<String> adapter;
     ArrayList<String> listName=new ArrayList<String>();
-    Button bck,edit;
+    Button bck,addec,removeec;
+    Switch policeSwitch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +40,11 @@ public class EmergencyContactView extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,listName);
         EClist.setAdapter(adapter);
-        bck=findViewById(R.id.ViewECtoMainMenu);
-        edit=findViewById(R.id.AddECButton);
+        bck=findViewById(R.id.BackToViewEC);
+        addec=findViewById(R.id.AddECButton);
+        removeec=findViewById(R.id.RemoveEC);
+        policeSwitch=findViewById(R.id.switch1);
+
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -65,6 +58,14 @@ public class EmergencyContactView extends AppCompatActivity {
                     }
 
                 }
+                String s=snapshot.child("Users").child(fAuth.getUid()).child("police_alert").getValue().toString();
+                if(s.equals("false"))
+                    policeSwitch.setChecked(false);
+                else
+                    policeSwitch.setChecked(true);
+
+
+
             }
 
             @Override
@@ -72,16 +73,38 @@ public class EmergencyContactView extends AppCompatActivity {
 
             }
         });
+
+        policeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(policeSwitch.isChecked()){
+                    reff.child("Users").child(fAuth.getUid()).child("police_alert").setValue("true");
+                }
+                else
+                    reff.child("Users").child(fAuth.getUid()).child("police_alert").setValue("false");
+            }
+        });
+
         bck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(EmergencyContactView.this,MainMenu.class));
             }
         });
-        edit.setOnClickListener(new View.OnClickListener() {
+        addec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EmergencyContactView.this,EmergencyContactAdd.class));
+                Intent edit=new Intent(EmergencyContactView.this,EmergencyContactAdd.class);
+                edit.putExtra("Edit","ADD");
+                startActivity(edit);
+            }
+        });
+        removeec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent edit=new Intent(EmergencyContactView.this,EmergencyContactAdd.class);
+                edit.putExtra("Edit","REMOVE");
+                startActivity(edit);
             }
         });
 

@@ -36,7 +36,7 @@ public class YourRespView extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,listName);
         respList.setAdapter(adapter);
-        bck=findViewById(R.id.ViewECtoMainMenu);
+        bck=findViewById(R.id.BackToViewEC);
         edit=findViewById(R.id.AddECButton);
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

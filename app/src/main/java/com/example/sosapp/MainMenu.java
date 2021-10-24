@@ -51,6 +51,7 @@ public class MainMenu extends AppCompatActivity {
 
         MySingletonClass.getInstance().setValuesPhoneUIDHashMap();
         MySingletonClass.getInstance().setValuesEmergencyContactList();
+        MySingletonClass.getInstance().setValuesNameUIDHashMap();
 
 
         //Track Text visibility condition.
