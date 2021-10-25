@@ -65,6 +65,7 @@ public class TriggerService extends Service implements SensorEventListener {
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child("Users").hasChild(fAuth.getUid()))
                 TriggerPassword=snapshot.child("Users").child(fAuth.getUid()).child("Trigger").getValue().toString();
             }
 

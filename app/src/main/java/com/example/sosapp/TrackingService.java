@@ -26,9 +26,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class TrackingService extends Service implements LocationListener {
     private LocationManager manager;
-    DatabaseReference reff;
+    DatabaseReference reff,reff2;
     FirebaseAuth fAuth;
     boolean close=false;
 
@@ -37,6 +40,7 @@ public class TrackingService extends Service implements LocationListener {
         super.onCreate();
         fAuth=FirebaseAuth.getInstance();
         reff= FirebaseDatabase.getInstance().getReference().child("Users").child(fAuth.getUid());
+        reff2=FirebaseDatabase.getInstance().getReference();
         manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O)
             startMyOwnForeground();
@@ -77,6 +81,7 @@ public class TrackingService extends Service implements LocationListener {
         }
         else if(intent.getAction().equals("STOPSERVICE")){
             close=true;
+            reff2.child("Trouble").child(fAuth.getUid()).removeValue();
             stopForeground(true);
             stopSelf();
         }
@@ -104,9 +109,27 @@ public class TrackingService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(@NonNull Location location) {
         if(!close){
+            String station="none";
+            station = calculatePoliceStation(location.getLatitude(),location.getLongitude());
+            if(!station.equals("none"))
+            reff2.child("Trouble").child(fAuth.getUid()).setValue(station);
             Toast.makeText(TrackingService.this, "Loc", Toast.LENGTH_SHORT).show();
             reff.child("location").setValue(location);
         }
 
+    }
+    String calculatePoliceStation(Double i,Double j){
+        Double minDist=Double.MAX_VALUE;
+        String nearestPoliceStation="none";
+        HashMap <String, ArrayList<Double>> ps=MySingletonClass.getInstance().PoliceStation;
+        for( String s : ps.keySet()){
+            ArrayList<Double> c=ps.get(s);
+            Double dis=Math.sqrt(  ( (i-c.get(0))*(i-c.get(0)) )+((j-c.get(1))*(j-c.get(1)))  );
+            if(minDist>dis){
+                minDist=dis;
+                nearestPoliceStation=s;
+            }
+        }
+        return nearestPoliceStation;
     }
 }
