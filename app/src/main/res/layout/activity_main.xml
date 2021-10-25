@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -12,7 +13,7 @@
         android:layout_height="192dp"
         android:background="#00000000"
         android:contentDescription="TODO"
-        android:src="@drawable/sosnobg"
+        android:src="@drawable/sos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -21,8 +22,8 @@
         app:layout_constraintVertical_bias="0.051"></ImageView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="329dp"
-        android:layout_height="389dp"
+        android:layout_width="331dp"
+        android:layout_height="413dp"
         android:background="@drawable/subsection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,63 +31,63 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.0"
         tools:context=".MainActivity">
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textInputLayout"
+            android:hint="username"
             app:boxStrokeColor="@color/black"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
             app:helperText="*required"
             app:helperTextTextColor="#DA0303"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_action_uname"
+            app:hintTextColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.05"
-            app:endIconMode="clear_text"
-            app:hintTextColor="@color/black"
-            app:startIconTint="@color/black"
-            app:endIconTint="@color/black"
-            android:hint="username"
-            >
+            app:startIconDrawable="@drawable/ic_action_uname"
+            app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/RegisterEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black"
-                android:inputType="textEmailAddress"/>
+                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/black"
             android:layout_width="300dp"
-            app:hintTextColor="@color/black"
             android:layout_height="wrap_content"
+            android:hint="password"
+            app:boxStrokeColor="@color/black"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/black"
+            app:helperText="*required"
+            app:helperTextTextColor="#DA0303"
+            app:hintTextColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/textInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="7"
-            app:endIconMode="password_toggle"
             app:startIconDrawable="@drawable/ic_action_pass"
-            app:startIconTint="@color/black"
-            app:endIconTint="@color/black"
-            app:helperText="*required"
-            app:helperTextTextColor="#DA0303"
-            android:hint="password"
-            >
+            app:startIconTint="@color/black">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/RegisterPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck"
                 android:inputType="textPassword"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -94,21 +95,21 @@
             android:layout_width="130dp"
             android:layout_height="63dp"
             android:layout_marginTop="35dp"
-            android:background="@drawable/buttons"
             android:text="Login"
-            android:textColor="@color/white"
+            android:backgroundTint="#AF37A3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/LoginToRegisterBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttons"
+            android:backgroundTint="#AF37A3"
             android:text="Register"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
