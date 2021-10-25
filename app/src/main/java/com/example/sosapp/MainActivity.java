@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            if(em.length()>17 && em.substring(em.length()-17).equals("chennaipolice.com")){
+                                startActivity(new Intent(getApplicationContext(),PoliceMainMenu.class));
+                            }
                             Toast.makeText(MainActivity.this,"Login Sucessfull",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainMenu.class));
                         }

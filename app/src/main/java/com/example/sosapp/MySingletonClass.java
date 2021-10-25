@@ -40,6 +40,32 @@ public class MySingletonClass extends AppCompatActivity {
 
     public ArrayList<String> currentEmergencyContacts;
 
+
+    public HashMap<String,ArrayList<Double>> PoliceStation=new HashMap<>();
+
+    public void setPoliceStationCoordinates(){
+        ArrayList<Double> cc=new ArrayList<>();
+        cc.add(12.982314992539667);
+        cc.add(80.19169419084243);
+        PoliceStation.put("S9",cc);
+
+        cc=new ArrayList<>();
+        cc.add(12.987205749252615);
+        cc.add(80.17473700898647);
+        PoliceStation.put("S3",cc);
+
+        cc=new ArrayList<>();
+        cc.add(12.973107952854557);
+        cc.add(80.1483090175329);
+        PoliceStation.put("S5",cc);
+
+        cc=new ArrayList<>();
+        cc.add(12.957798623217682);
+        cc.add(80.18555536110628);
+        PoliceStation.put("S7",cc);
+
+    }
+
     public static MySingletonClass getInstance() {
         if (instance == null)
             instance = new MySingletonClass();

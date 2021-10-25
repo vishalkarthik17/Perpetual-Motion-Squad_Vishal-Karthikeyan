@@ -1,18 +1,11 @@
 package com.example.sosapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +20,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.sosapp.databinding.ActivityMapsBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,17 +62,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             who=b.get("uid").toString();
         }
 
-        pbMap=findViewById(R.id.progressBarMap);
+        pbMap=findViewById(R.id.progressBarMap1);
         LocText=findViewById(R.id.LocationText);
         fAuth=FirebaseAuth.getInstance();
-        backBtn=findViewById(R.id.BackBtnMap);
-        titleText=findViewById(R.id.MapTitleText);
+        backBtn=findViewById(R.id.BackBtnMap1);
+        titleText=findViewById(R.id.MapTitleText1);
 
         reff = FirebaseDatabase.getInstance().getReference();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
