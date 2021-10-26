@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26875" />
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.1398148148148148" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_add_emergency_contact.xml" value="0.2109375" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_emergency_contact_add.xml" value="0.2" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_emergency_contact_remove.xml" value="0.17889492753623187" />
-        <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_emergency_contact_view.xml" value="0.536" />
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_emergency_contact_view.xml" value="0.4" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_main.xml" value="0.19927536231884058" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_main_menu.xml" value="0.4" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_maps.xml" value="0.23854166666666668" />
@@ -18,6 +20,8 @@
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/layout/activity_your_resp_view.xml" value="0.264" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/menu/checkbox.xml" value="0.209375" />
         <entry key="..\:/MAIN/SOSApp/app/src/main/res/menu/checkbox1.xml" value="0.20677083333333332" />
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1398148148148148" />
+        <entry key="..\:/MAIN/SOSApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1398148148148148" />
         <entry key="..\:/Sudarshan/SCH-SOS/SOSApp/app/src/main/res/layout/activity_emergency_contact_add.xml" value="0.25416666666666665" />
         <entry key="..\:/Sudarshan/SCH-SOS/SOSApp/app/src/main/res/layout/activity_emergency_contact_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Sudarshan/SCH-SOS/SOSApp/app/src/main/res/layout/contact_info.xml" value="0.25416666666666665" />

@@ -67,7 +67,8 @@ public class PoliceMainMenu extends AppCompatActivity {
                     if(!id.equals("AAA")){
                         String station=i.getValue().toString();
                         //Toast.makeText(PoliceMainMenu.this, station+" "+mystation, Toast.LENGTH_SHORT).show();
-                        if(station.trim().equals(mystation.trim()) ){
+                        if(snapshot.child("Users").child(id).child("police_alert").getValue().equals("true")
+                                && station.trim().equals(mystation.trim()) ){
                             name.add(snapshot.child("Users").child(id).child("Name").getValue().toString());
                             adapter.notifyDataSetChanged();
                         }

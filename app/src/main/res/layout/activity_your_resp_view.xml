@@ -42,7 +42,8 @@
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ECEditTitle"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintVertical_bias="0.112"
+        />
 
     <Button
         android:id="@+id/BackToViewEC"
