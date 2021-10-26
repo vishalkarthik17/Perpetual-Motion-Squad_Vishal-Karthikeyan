@@ -25,9 +25,19 @@
         <entry key="..\:/vijal/SOSApp/app/src/main/res/drawable-hdpi/rounded.xml" value="0.290625" />
         <entry key="..\:/vijal/SOSApp/app/src/main/res/drawable/background.xml" value="0.290625" />
         <entry key="..\:/vijal/SOSApp/app/src/main/res/drawable/subsection.xml" value="0.28425925925925927" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_add_emergency_contact.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_emergency_contact_add.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_emergency_contact_view.xml" value="0.27447916666666666" />
         <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_main_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_maps.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_police_main_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_police_maps.xml" value="0.27447916666666666" />
         <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_registration.xml" value="0.264" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_set_voice_trigger.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_your_resp_edit.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/activity_your_resp_view.xml" value="0.27447916666666666" />
+        <entry key="..\:/vijal/SOSApp/app/src/main/res/layout/contact_info.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
