@@ -139,6 +139,7 @@
         android:layout_width="130dp"
         android:layout_height="63dp"
         android:text="Register"
+        android:textColor="@color/white"
         android:backgroundTint="#AF37A3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
