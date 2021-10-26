@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".EmergencyContactView">
 
     <Button
@@ -11,6 +12,8 @@
         android:layout_width="100dp"
         android:layout_height="52dp"
         android:text="ADD"
+        android:backgroundTint="#AF37A3"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
@@ -25,6 +28,7 @@
         android:layout_marginTop="28dp"
         android:text="Your Emergency Contacts"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +40,7 @@
         android:id="@+id/EmergencyContactViewList"
         android:layout_width="384dp"
         android:layout_height="505dp"
+        android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
@@ -48,8 +53,10 @@
         android:layout_width="102dp"
         android:layout_height="51dp"
         android:text="Back"
+        android:backgroundTint="#AF37A3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList"
@@ -60,6 +67,8 @@
         android:layout_width="126dp"
         android:layout_height="55dp"
         android:text="Remove"
+        android:textColor="@color/white"
+        android:backgroundTint="#AF37A3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/AddECButton"
         app:layout_constraintStart_toEndOf="@+id/BackToViewEC"
@@ -67,20 +76,23 @@
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="78dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:scaleX="1.3"
+        android:scaleY="1.3"
         android:showText="false"
         android:textColor="#000000"
         android:textOff="OFF"
         android:textOn="ON"
-        android:textSize="10sp"
+        android:textSize="8sp"
         android:typeface="normal"
         app:layout_constraintBottom_toTopOf="@+id/EmergencyContactViewList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/ECEditTitle"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.642"
         tools:checked="false" />
 
     <TextView
@@ -89,11 +101,12 @@
         android:layout_height="wrap_content"
         android:text="Police Alert : "
         android:textSize="16sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ECEditTitle"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.032" />
 </androidx.constraintlayout.widget.ConstraintLayout>

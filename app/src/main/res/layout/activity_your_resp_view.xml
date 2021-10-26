@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".YourRespView">
+    tools:context=".YourRespView"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/AddECButton"
         android:layout_width="119dp"
         android:layout_height="51dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
         android:text="REMOVE "
+        android:backgroundTint="#AF37A3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -28,6 +31,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,14 +46,17 @@
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ECEditTitle"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintVertical_bias="0.112"
+        />
 
     <Button
         android:id="@+id/BackToViewEC"
         android:layout_width="108dp"
         android:layout_height="52dp"
         android:layout_marginStart="68dp"
+        android:textColor="@color/white"
         android:text="Back"
+        android:backgroundTint="#AF37A3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmergencyContactViewList" />
