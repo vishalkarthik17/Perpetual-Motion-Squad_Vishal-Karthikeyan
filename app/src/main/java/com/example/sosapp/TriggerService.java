@@ -122,7 +122,7 @@ public class TriggerService extends Service implements SensorEventListener {
             accelerometerSensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             isSensorAvailable=true;
         }
-        else Toast.makeText(this, "Accelerometer Not Available", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Sensor Not Available", Toast.LENGTH_SHORT).show();
 
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O)
@@ -290,8 +290,8 @@ public class TriggerService extends Service implements SensorEventListener {
             startService(serviceIntent);
         }
 
-        else
-            Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
+        //else
+           // Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
     }
     public void stopTrackingService() {
         if(isMyServiceRunning(TrackingService.class)){

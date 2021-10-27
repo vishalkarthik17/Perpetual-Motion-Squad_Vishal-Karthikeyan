@@ -47,7 +47,7 @@ public class YourRespView extends AppCompatActivity {
                         String toDisp=snapshot.child("Users").child(uid).child("Name").getValue().toString();
                         listName.add(toDisp);
                         adapter.notifyDataSetChanged();
-                        Toast.makeText(YourRespView.this,toDisp , Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(YourRespView.this,toDisp , Toast.LENGTH_SHORT).show();
                     }
 
                 }

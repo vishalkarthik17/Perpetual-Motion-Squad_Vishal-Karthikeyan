@@ -151,8 +151,8 @@ public class MainMenu extends AppCompatActivity {
         if(!isMyServiceRunning(TriggerService.class)){
             startService(serviceIntent);
         }
-        else
-            Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
+        //else
+            //Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
     }
     public void stopTriggerService() {
         if(isMyServiceRunning(TriggerService.class)){
@@ -217,8 +217,8 @@ public class MainMenu extends AppCompatActivity {
             startService(serviceIntent);
         }
 
-        else
-            Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
+        //else
+           // Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
     }
     public void stopTrackingService() {
         if(isMyServiceRunning(TrackingService.class)){

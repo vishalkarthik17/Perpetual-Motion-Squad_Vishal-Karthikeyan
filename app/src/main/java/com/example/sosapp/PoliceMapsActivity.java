@@ -71,13 +71,11 @@ public class PoliceMapsActivity extends FragmentActivity implements OnMapReadyCa
         Bundle b=getIntent().getExtras();
         if(b.getString("who")!=null){
             name=b.getString("who");
-            Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
             titleText.setText(name+" is in Trouble!");
             uid=MySingletonClass.getInstance().NamexUID_DB.get(name);
         }
-        else{
-            Toast.makeText(this, "Loserrr", Toast.LENGTH_SHORT).show();
-        }
+
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

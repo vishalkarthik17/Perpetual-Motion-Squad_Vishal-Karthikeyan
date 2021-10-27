@@ -113,7 +113,7 @@ public class TrackingService extends Service implements LocationListener {
             station = calculatePoliceStation(location.getLatitude(),location.getLongitude());
             if(!station.equals("none"))
             reff2.child("Trouble").child(fAuth.getUid()).setValue(station);
-            Toast.makeText(TrackingService.this, "Loc", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(TrackingService.this, "Loc", Toast.LENGTH_SHORT).show();
             reff.child("location").setValue(location);
         }
 

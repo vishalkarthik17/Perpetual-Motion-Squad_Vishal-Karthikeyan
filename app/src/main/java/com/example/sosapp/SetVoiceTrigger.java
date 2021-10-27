@@ -114,8 +114,8 @@ public class SetVoiceTrigger extends AppCompatActivity {
         if(!isMyServiceRunning(TriggerService.class)){
             startService(serviceIntent);
         }
-        else
-            Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
+        //else
+           // Toast.makeText(this, "already running", Toast.LENGTH_SHORT).show();
     }
     public void stopTriggerService() {
         if(isMyServiceRunning(TriggerService.class)){

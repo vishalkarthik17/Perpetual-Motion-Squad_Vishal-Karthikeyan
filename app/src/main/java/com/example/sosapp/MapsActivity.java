@@ -88,7 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 double lat=Double.parseDouble(snapshot.child("location").child("latitude").getValue().toString());
                 double longi=Double.parseDouble(snapshot.child("location").child("longitude").getValue().toString());
                 String str= String.valueOf(lat)+" / "+String.valueOf(longi)+" ";
-                Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
                 LatLng curpos=new LatLng(lat,longi);
                 if(lat!=0 && longi!=0){
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -117,36 +117,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
-        /*
-        reff.child("Users").child(who).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-
-
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
     }
 
 
@@ -183,7 +154,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double lat=Double.parseDouble(snapshot.child("location").child("latitude").getValue().toString());
                     double longi=Double.parseDouble(snapshot.child("location").child("longitude").getValue().toString());
                     String str= String.valueOf(lat)+" / "+String.valueOf(longi)+" ";
-                    Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
                     LatLng curpos=new LatLng(lat,longi);
                     if(lat!=0 && longi!=0){
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -216,48 +187,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
     }
-/*
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
 
-
-        if(location!=null  ){
-            String str="Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude();
-            Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-            LatLng curpos=new LatLng(location.getLatitude(),location.getLongitude());
-
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            String abc=(formatter.format(date))+" ";
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                abc=abc+addresses.get(0).getSubLocality()+", "+addresses.get(0).getLocality();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            mMap.addMarker(new MarkerOptions().position(curpos).title(abc));
-            LocText.setText("Location :"+abc.substring(19, abc.length()));
-            if(first==true){
-                pbMap.setVisibility(View.INVISIBLE);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curpos, 15));
-                first=false;
-            }
-
-            saveLocation(location);
-        }
-        else{
-            Toast.makeText(this, "No Location", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void saveLocation(Location location) {
-        reff.child("Users").child(fAuth.getUid()).child("LocationInfo").setValue(location);
-
-
-    }
-
-*/
 
 }

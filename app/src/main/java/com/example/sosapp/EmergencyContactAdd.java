@@ -250,7 +250,7 @@ public class EmergencyContactAdd extends AppCompatActivity {
                 reff.child("Users").child(fAuth.getUid()).child("EmergencyContacts").child(Uid.get(i)).setValue("true");
                 reff.child("Users").child(Uid.get(i)).child("YourResp").child(fAuth.getUid()).setValue("false");
             }
-            Toast.makeText(this, "Selecteddd", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Selecteddd", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,EmergencyContactView.class));
         }
         else{
@@ -272,7 +272,7 @@ public class EmergencyContactAdd extends AppCompatActivity {
                 reff.child("Users").child(fAuth.getUid()).child("EmergencyContacts").child(uid.get(i)).removeValue();
                 reff.child("Users").child(uid.get(i)).child("YourResp").child(fAuth.getUid()).removeValue();
             }
-            Toast.makeText(this,ss,Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this,ss,Toast.LENGTH_SHORT).show();
             MySingletonClass.getInstance().setValuesEmergencyContactList();
             startActivity(new Intent(this,EmergencyContactView.class));
         }
