@@ -37,7 +37,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="username"
+            android:hint="email"
             app:boxStrokeColor="@color/black"
             app:endIconMode="clear_text"
             app:endIconTint="@color/black"
